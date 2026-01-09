@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahadi for Roofers - Meta Ads Specialist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ==================== GLOBAL STYLES ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* ==================== COLOR VARIABLES (Easy to Edit) ==================== */
+        :root {
+            --primary-color: #7fd0ff; /* Light Blue - Main Brand Color */
+            --secondary-color: #8B0000; /* Deep Red/Maroon */
+            --dark-color: #2c3e50;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+        }
+
+        /* ==================== NAVIGATION BAR ==================== */
+        nav {
+            background: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--dark-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--dark-color);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,0 L50,10 L100,5 L150,15 L200,10 L250,20 L300,15 L350,25 L400,20 L450,30 L500,25 L550,35 L600,30 L650,40 L700,35 L750,45 L800,40 L850,50 L900,45 L950,55 L1000,50 L1050,60 L1100,55 L1150,65 L1200,60 L1200,0 Z" fill="rgba(255,255,255,0.1)"/></svg>') repeat-x;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--white);
+            color: var(--secondary-color);
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 10px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .cta-button.secondary {
+            background: var(--secondary-color);
+            color: var(--white);
+        }
+
+        /* ==================== SECTION STYLES ==================== */
+        section {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        /* ==================== ABOUT SECTION ==================== */
+        #about {
+            background: var(--light-bg);
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* ==================== RESULTS/PORTFOLIO SECTION ==================== */
+        /* IMPORTANT: Place your campaign images (campaign1.jpg through campaign8.jpg) in the same folder as this HTML file */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 3rem;
+        }
+
+        .result-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .result-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .result-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ==================== SERVICES/PACKAGES SECTION ==================== */
+        #services {
+            background: var(--light-bg);
+        }
+
+        .packages-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 3rem;
+        }
+
+        .package-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .package-card h3 {
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .package-duration {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .package-price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin: 1rem 0;
+        }
+
+        .package-note {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .package-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .package-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .package-features li:last-child {
+            border-bottom: none;
+        }
+
+        .package-purpose {
+            background: var(--light-bg);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            font-style: italic;
+        }
+
+        .packages-tagline {
+            text-align: center;
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-top: 3rem;
+            color: var(--dark-color);
+        }
+
+        /* ==================== TESTIMONIALS SECTION ==================== */
+        /* IMPORTANT: Place your testimonial images (testimonial1.jpg through testimonial3.jpg) in the same folder as this HTML file */
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .testimonial-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .testimonial-content {
+            padding: 30px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 0.3rem;
+        }
+
+        .testimonial-position {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* ==================== CONTACT SECTION ==================== */
+        #contact {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        #contact .section-title {
+            color: var(--white);
+        }
+
+        .contact-info {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 3rem 0;
+        }
+
+        .contact-item {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 10px;
+            min-width: 250px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 3rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 2rem;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            background: var(--dark-color);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        /* ==================== RESPONSIVE DESIGN ==================== */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .packages-container,
+            .testimonials-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-methods {
+                flex-direction: column;
+            }
+        }
+
+        /* Smooth Scroll Behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <!-- TO EDIT: Change navigation text in the <a> tags below -->
+    <nav>
+        <div class="container">
+            <div class="logo">Mahadi for Roofers</div>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <!-- TO EDIT: Change the headline, tagline, and button text below -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Mahadi for Roofers</h1>
+            <p class="tagline">I Help Roofing Companies Get More Quality Leads Through Meta Ads</p>
+            <a href="#contact" class="cta-button">Get Started</a>
+            <a href="https://wa.me/8801609381471" target="_blank" class="cta-button secondary">
+                <i class="fab fa-whatsapp"></i> WhatsApp Me
+            </a>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <!-- TO EDIT: Change the about text in the <p> tag below -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>Hi, I'm Mahadi, a Social Media Marketer with 2+ years of experience running Meta Ads across industries like travel, fashion, and coaching. After working with various niches, I discovered a genuine passion for the roofing industry and decided to focus my expertise here. I approach every business like a doctor: I listen to your problems & challenges, understand your goals, and create data-driven solutions that deliver real results.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== RESULTS/PORTFOLIO SECTION ==================== -->
+    <!-- TO EDIT: Replace "campaignX.jpg" with your actual image file names -->
+    <!-- IMPORTANT: Make sure your campaign images are in the same folder as this HTML file -->
+    <section id="results">
+        <div class="container">
+            <h2 class="section-title">Proven Meta Ads Results</h2>
+            <p class="section-subtitle">Real campaign performance across multiple industries</p>
+            <div class="results-grid">
+                <div class="result-card">
+                    <img src="campaign1.jpg" alt="Engagement Campaign - 557 conversations">
+                </div>
+                <div class="result-card">
+                    <img src="campaign2.jpg" alt="Messages Campaign - 289 conversations">
+                </div>
+                <div class="result-card">
+                    <img src="campaign3.jpg" alt="Awareness Campaign - 71,278 reach">
+                </div>
+                <div class="result-card">
+                    <img src="campaign4.jpg" alt="Engagement Campaign - 427 conversations">
+                </div>
+                <div class="result-card">
+                    <img src="campaign5.jpg" alt="Engagement Campaign - 95 conversations">
+                </div>
+                <div class="result-card">
+                    <img src="campaign6.jpg" alt="Engagement Campaign - 220 conversations">
+                </div>
+                <div class="result-card">
+                    <img src="campaign7.jpg" alt="Engagement Campaign - 266 conversations">
+                </div>
+                <div class="result-card">
+                    <img src="campaign8.jpg" alt="Lead Campaign - 20 leads">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SERVICES/PACKAGES SECTION ==================== -->
+    <!-- TO EDIT: Change package details, prices, and features below -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Social Media Marketing Packages</h2>
+            <div class="packages-container">
+                
+                <!-- Package 1 -->
+                <div class="package-card">
+                    <h3>PAID ADS TEST / PILOT CAMPAIGN</h3>
+                    <div class="package-duration">Duration: 7-10 Days</div>
+                    <div>Best for: First-time clients</div>
+                    <div class="package-price">$149 - $199</div>
+                    <div class="package-note">Note: Ad spend is paid separately by the client</div>
+                    
+                    <h4>What you get:</h4>
+                    <ul class="package-features">
+                        <li>✅ Business & goal review</li>
+                        <li>✅ Meta ads account setup or audit</li>
+                        <li>✅ Pixel & conversion tracking setup</li>
+                        <li>✅ 2-3 audience tests</li>
+                        <li>✅ Simple campaign structure</li>
+                        <li>✅ Ad copy & creative guidance</li>
+                        <li>✅ Daily performance monitoring</li>
+                        <li>✅ Final performance report & analysis</li>
+                        <li>✅ Clear recommendation: Scale / Adjust / Stop</li>
+                    </ul>
+                    
+                    <div class="package-purpose">
+                        <strong>Purpose:</strong> To test if paid ads work for your business (This campaign is for data & proof, not guaranteed profit)
+                    </div>
+                </div>
+
+                <!-- Package 2 -->
+                <div class="package-card">
+                    <h3>MONTHLY PAID ADS MANAGEMENT</h3>
+                    <div class="package-duration">Duration: 30 Days</div>
+                    <div>Best for: Consistent leads & growth</div>
+                    <div class="package-price">$399 - $449 / month</div>
+                    <div class="package-note">Note: Ad spend is paid separately by the client</div>
+                    
+                    <h4>What you get:</h4>
+                    <ul class="package-features">
+                        <li>✅ Monthly ads strategy planning</li>
+                        <li>✅ 2-3 active campaigns (leads, messages, retargeting)</li>
+                        <li>✅ Ongoing audience & creative testing</li>
+                        <li>✅ Regular ad optimization</li>
+                        <li>✅ Budget & performance control</li>
+                        <li>✅ Pixel & conversion tracking monitoring</li>
+                        <li>✅ Weekly / bi-weekly performance summary</li>
+                        <li>✅ End-of-month detailed report & next plan</li>
+                    </ul>
+                    
+                    <div class="package-purpose">
+                        <strong>Purpose:</strong> To generate consistent results and improve performance over time
+                    </div>
+                </div>
+
+            </div>
+            <p class="packages-tagline">"We don't guess — we test, analyze, and scale what works." <br>-Mahadi Digital Hub</p>
+        </div>
+    </section>
+
+    <!-- ==================== TESTIMONIALS SECTION ==================== -->
+    <!-- TO EDIT: Replace testimonial images and text below -->
+    <!-- IMPORTANT: Make sure your testimonial images are in the same folder as this HTML file -->
+    <section id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Clients Say</h2>
+            <div class="testimonials-container">
+                
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <img src="testimonial1.jpg" alt="Diganta Sarker" class="testimonial-image">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"Mahadi helped Maverick Threads scale our online sales through powerful, well-targeted Meta ad campaigns. In a short time, he turned our ads into a consistent stream of real buyers, not just traffic. Our ROAS improved and our brand visibility grew because of his strategy. If you want results in fashion marketing, Mahadi is a solid choice."</p>
+                        <div class="testimonial-author">Diganta Sarker</div>
+                        <div class="testimonial-position">Owner at Maverick Threads</div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <img src="testimonial2.jpg" alt="Hanif Mahabir Noor" class="testimonial-image">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"Mahadi has been a key part of Unitech Bangladesh's growth over the last two years. He managed our Meta ads in a way that consistently brought in serious students, not just random leads. Our enrollments increased because he understands how to market education the right way. Reliable, strategic, and results-driven. Mahadi truly delivers."</p>
+                        <div class="testimonial-author">Hanif Mahabir Noor</div>
+                        <div class="testimonial-position">CEO at Unitech Bangladesh</div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <img src="testimonial3.jpg" alt="MD. Jalal Uddin Bhuiyan" class="testimonial-image">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"Mahadi has been an absolute game-changer for Sadia World Consultancy. Over the last 2 years, he consistently delivered high-quality leads through Meta ads that actually converted into real clients. Our bookings and inquiries grew because he knows how to turn ads into revenue, not just clicks. If you want someone who understands performance marketing, Mahadi is that person."</p>
+                        <div class="testimonial-author">MD. Jalal Uddin Bhuiyan</div>
+                        <div class="testimonial-position">CEO at Sadia World Consultancy</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <!-- TO EDIT: Change contact information below -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Work Together</h2>
+            <p class="section-subtitle">Ready to grow your roofing business? Get in touch today!</p>
+            
+            <div class="contact-info">
+                <div class="contact-methods">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <a href="mailto:mahadidigitalhub@gmail.com">mahadidigitalhub@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <h3>WhatsApp</h3>
+                        <a href="https://wa.me/8801609381471" target="_blank">+880 1609 381471</a>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://www.facebook.com/mahadidigitalhub" target="_blank" title="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/mdabdurrhamanmahdin/" target="_blank" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://www.instagram.com/mahadi_digital_hub" target="_blank" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <!-- TO EDIT: Change copyright year and text below -->
+    <footer>
+        <p>&copy; 2025 Mahadi for Roofers. All rights reserved.</p>
+    </footer>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('active');
+        }
+
+        // Close menu when clicking on a link (for mobile)
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('nav-menu').classList.remove('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
